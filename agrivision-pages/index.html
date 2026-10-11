@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102d24"><meta name="description" content="AgriVision AI crop leaf classification research prototype">
+<title>AgriVision AI | Crop Health</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="shell">
+  <header class="hero">
+    <div class="eyebrow"><span class="leaf">✿</span> AGRIVISION AI <span class="dot">·</span> SMART AGRICULTURE</div>
+    <h1>Know your crop.<br class="mobile"> Protect your harvest.</h1>
+    <p>AI-powered crop leaf classification using MobileNetV2. Upload a photo to explore its predicted health category.</p>
+    <div class="hero-tag"><span class="pulse"></span> Lightweight AI research prototype</div>
+  </header>
+
+  <section class="metrics" aria-label="Model metrics">
+    <article class="metric"><div class="metric-icon">↗</div><strong>92.55%</strong><span>Fine-tuned model test accuracy</span></article>
+    <article class="metric"><div class="metric-icon">◉</div><strong>17</strong><span>Classification categories</span></article>
+    <article class="metric"><div class="metric-icon">▣</div><strong>2.41 MB</strong><span>Quantized TFLite model size</span></article>
+  </section>
+
+  <section class="section-head"><div><div class="kicker">CROP HEALTH CHECK</div><h2>Analyze a leaf</h2><p>Upload a clear leaf photo or try one of the sample cards below.</p></div><div class="step-pill"><span>01</span> Upload <span class="arrow">→</span> <span>02</span> Analyze</div></section>
+
+  <section class="workspace">
+    <article class="panel upload-panel">
+      <div class="panel-title"><span class="title-icon">↑</span><div><h3>Upload a leaf image</h3><p>PNG, JPG or WEBP</p></div></div>
+      <label class="dropzone" id="dropzone" for="fileInput">
+        <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp">
+        <div id="uploadPrompt" class="upload-prompt"><div class="upload-icon">↑</div><strong>Choose an image to upload</strong><span>or drag and drop it here</span><small>For best results, use a clear photo of one leaf.</small></div>
+        <img id="preview" alt="Selected leaf preview" hidden>
+      </label>
+      <div class="file-meta" id="fileMeta" hidden><span class="file-check">✓</span><span id="fileName">Image selected</span><button id="removeImage" class="text-button" type="button">Remove</button></div>
+      <button class="primary-button" id="analyzeBtn" type="button"><span>✦</span> Analyze Crop <span class="button-arrow">→</span></button>
+      <p class="hint">Your selected image is previewed locally in this browser.</p>
+      <div class="notice"><span>ⓘ</span><p><strong>Demo note</strong> The GitHub Pages version hosts the interface only. Connect a prediction API to enable real model inference.</p></div>
+    </article>
+
+    <article class="panel result-panel">
+      <div class="panel-title"><span class="title-icon">⌁</span><div><h3>Top model predictions</h3><p>Prediction results will appear here</p></div></div>
+      <div class="empty-result" id="emptyResult"><div class="result-illustration"><span class="ring ring1"></span><span class="ring ring2"></span><span class="sprout">♧</span></div><strong>Ready to analyze</strong><p>Upload a leaf image, then connect the model API to view the top five classes.</p><div class="result-skeleton"><i></i><i></i><i></i></div></div>
+      <div id="resultMessage" class="result-message" hidden></div>
+      <div class="advisory"><div class="advisory-icon">✧</div><div><strong>Result &amp; next steps</strong><p id="advisoryText">Once the prediction API is connected, this area can show the predicted class and general guidance.</p></div></div>
+    </article>
+  </section>
+
+  <section class="gallery-section"><div class="section-head gallery-head"><div><div class="kicker">LEARN BY EXAMPLE</div><h2>Explore sample leaf images</h2><p>Common maize, potato and tomato categories supported by the model.</p></div><span class="gallery-count">17 CLASSES</span></div>
+    <div class="gallery" id="gallery">
+      <button class="sample-card" data-crop="Maize" data-condition="Common rust"><span class="sample-art maize">🌿</span><span class="sample-info"><small>MAIZE</small><strong>Common rust</strong><em>Example category</em></span><span class="sample-arrow">↗</span></button>
+      <button class="sample-card" data-crop="Maize" data-condition="Healthy"><span class="sample-art maize2">🌱</span><span class="sample-info"><small>MAIZE</small><strong>Healthy</strong><em>Example category</em></span><span class="sample-arrow">↗</span></button>
+      <button class="sample-card" data-crop="Potato" data-condition="Early blight"><span class="sample-art potato">🍃</span><span class="sample-info"><small>POTATO</small><strong>Early blight</strong><em>Example category</em></span><span class="sample-arrow">↗</span></button>
+      <button class="sample-card" data-crop="Potato" data-condition="Late blight"><span class="sample-art potato2">🌿</span><span class="sample-info"><small>POTATO</small><strong>Late blight</strong><em>Example category</em></span><span class="sample-arrow">↗</span></button>
+      <button class="sample-card" data-crop="Tomato" data-condition="Early blight"><span class="sample-art tomato">🍅</span><span class="sample-info"><small>TOMATO</small><strong>Early blight</strong><em>Example category</em></span><span class="sample-arrow">↗</span></button>
+      <button class="sample-card" data-crop="Tomato" data-condition="Healthy"><span class="sample-art tomato2">🌱</span><span class="sample-info"><small>TOMATO</small><strong>Healthy</strong><em>Example category</em></span><span class="sample-arrow">↗</span></button>
+    </div>
+  </section>
+  <footer><div class="footer-brand"><span>✿</span> AGRIVISION AI</div><p>MobileNetV2 · TensorFlow Lite · Crop health research prototype</p><p class="disclaimer">AI predictions are informational, not confirmed diagnoses. Verify suspected diseases with an agricultural expert before choosing treatment.</p></footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body></html>
